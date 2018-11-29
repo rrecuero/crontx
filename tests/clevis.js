@@ -109,17 +109,17 @@ module.exports = {
         for(let c in module.exports.contracts){
           let thisContract = module.exports.contracts[c]
           console.log(tab,thisContract.magenta)
-          let address = fs.readFileSync(thisContract+"/"+thisContract+".address").toString().trim()
+          let address = fs.readFileSync('contracts/' + thisContract+ "/" + thisContract+".address").toString().trim()
           console.log(tab,"ADDRESS:",address.blue)
           assert(address,"No Address!?")
           fs.writeFileSync("src/contracts/"+thisContract+".address.js","module.exports = \""+address+"\"");
-          let blockNumber = fs.readFileSync(thisContract+"/"+thisContract+".blockNumber").toString().trim()
+          let blockNumber = fs.readFileSync('contracts/' + thisContract+"/"+thisContract+".blockNumber").toString().trim()
           console.log(tab,"blockNumber:",blockNumber.blue)
           assert(blockNumber,"No blockNumber!?")
           fs.writeFileSync("src/contracts/"+thisContract+".blocknumber.js","module.exports = \""+blockNumber+"\"");
-          let abi = fs.readFileSync(thisContract+"/"+thisContract+".abi").toString().trim()
+          let abi = fs.readFileSync('contracts/' + thisContract+"/"+thisContract+".abi").toString().trim()
           fs.writeFileSync("src/contracts/"+thisContract+".abi.js","module.exports = "+abi);
-          let bytecode = fs.readFileSync(thisContract+"/"+thisContract+".bytecode").toString().trim()
+          let bytecode = fs.readFileSync('contracts/' + thisContract+"/"+thisContract+".bytecode").toString().trim()
           fs.writeFileSync("src/contracts/"+thisContract+".bytecode.js","module.exports = \""+bytecode+"\"");
         }
         fs.writeFileSync("src/contracts/contracts.js","module.exports = "+JSON.stringify(module.exports.contracts));

@@ -38,8 +38,8 @@ let transactionListKey = "transactionList"+NETWORK
 
 
 let redisHost = 'localhost'
-let redisPort = 57300
-if(NETWORK>0&&NETWORK<9){
+let redisPort = 6379
+if(false){
  redisHost = 'cryptogsnew.048tmy.0001.use2.cache.amazonaws.com'
  redisPort = 6379
 }

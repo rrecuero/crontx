@@ -1,11 +1,13 @@
 {
   "provider": "http://localhost:8545",
-  "gasprice": 1.4000000000000001,
-  "ethprice": 402.995082638,
+  "gasprice": 8.1,
+  "ethprice": 117.821763984,
   "deploygas": 5500000,
   "xfergas": 1300000,
-  "sites":{
-    "metatx.io": "E1152K4WIKG6MB"
-  },
-  "DEBUG": true
+  "DEBUG": true,
+  "USE_INFURA": false,
+  "ROOT_FOLDER": "/Users/rrecuero/dev/bouncer-proxy",
+  "CRA_FOLDER": "./src",
+  "TESTS_FOLDER": "tests",
+  "CONTRACTS_FOLDER": "contracts"
 }

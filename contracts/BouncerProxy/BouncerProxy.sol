@@ -56,7 +56,8 @@ pragma solidity ^0.4.24;
 //you run your own relayer and pay for all of their transactions, revoking any bad actors if needed
 
 import "openzeppelin-solidity/contracts/access/SignatureBouncer.sol";
-contract BouncerProxy is SignatureBouncer {
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+contract BouncerProxy is SignatureBouncer, Ownable {
   constructor() public { }
   //to avoid replay but separate for different minBlocks
   mapping(address => mapping(uint => uint)) public nonce;
@@ -103,7 +104,7 @@ contract BouncerProxy is SignatureBouncer {
     //the hash contains all of the information about the meta transaction to be called
     bytes32 _hash = keccak256(abi.encodePacked(address(this), signer, destination, value, data, rewardToken, rewardAmount, minBlock, _nonce));
     //this makes sure signer signed correctly AND signer is a valid bouncer
-    return isValidDataHash(_hash,sig);
+    return _isValidDataHash(_hash,sig);
   }
 
   // copied from https://github.com/uport-project/uport-identity/blob/develop/contracts/Proxy.sol
